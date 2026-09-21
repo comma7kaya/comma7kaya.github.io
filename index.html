@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>真香收纳荒漠屠夫2-沉浸式收纳整理与荒漠改造攻略</title>
+    <meta name="description" content="本站提供真香收纳荒漠屠夫2的详细图文攻略、关卡解锁技巧、收纳道具使用指南及荒漠改造布局方案。帮助玩家快速通关，打造舒适收纳环境。">
+    <meta name="keywords" content="真香收纳荒漠屠夫2,收纳游戏攻略,荒漠改造,收纳技巧,休闲益智">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-radius: 12px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* 头部导航 */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #4ca1af 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            background-color: #d35400;
+        }
+
+        /* 核心攻略区 */
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 5px solid var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 180px;
+            background-color: #eee;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background-color: #e8f6f3;
+            color: #16a085;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .card-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .card-link::after {
+            content: '→';
+            margin-left: 5px;
+            transition: margin-left 0.2s;
+        }
+
+        .card-link:hover::after {
+            margin-left: 10px;
+        }
+
+        /* 关卡详情表 */
+        .level-table-wrapper {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        tr:hover {
+            background-color: #fafafa;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .status-done {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-todo {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        /* 工具栏 */
+        .tools-section {
+            background-color: #fff;
+            padding: 40px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tools-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .tool-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background-color: #f1f2f6;
+            border-radius: 50px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        /* FAQ */
+        .faq-section {
+            margin-bottom: 60px;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-secondary);
+            display: none;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--accent-color);
+        }
+
+        .icon-plus {
+            width: 20px;
+            height: 20px;
+            border-right: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+            transform: rotate(45deg);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .icon-plus {
+            transform: rotate(-135deg);
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            border-top: 1px solid #34495e;
+            padding-top: 20px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav-wrapper {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">真香<span>收纳</span>荒漠屠夫2</a>
+            <nav>
+                <ul>
+                    <li><a href="#guide">新手攻略</a></li>
+                    <li><a href="#levels">关卡详解</a></li>
+                    <li><a href="#tools">工具推荐</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>荒漠变绿洲，收纳达人的进阶之路</h1>
+                <p>在《真香收纳荒漠屠夫2》中，面对杂乱无章的废弃空间，你将运用巧妙的收纳技巧和创意布局，一步步将荒芜之地改造成温馨舒适的家园。本站提供最全的通关指南与布局思路。</p>
+                <a href="#guide" class="hero-btn">开始浏览攻略</a>
+            </div>
+        </section>
+
+        <!-- Guide Section -->
+        <section id="guide" class="container">
+            <h2 class="section-title">核心攻略指南</h2>
+            <div class="guide-grid">
+                <article class="card">
+                    <img src="https://picsum.photos/seed/sort1/400/250" alt="空间规划" class="card-img">
+                    <div class="card-content">
+                        <span class="card-tag">空间规划</span>
+                        <h3>从混乱到有序的步骤</h3>
+                        <p>掌握“清空-分类-收纳-装饰”的黄金四步法。如何在有限的空间内最大化利用垂直高度，是通关荒漠关卡的关键。</p>
+                        <a href="#" class="card-link">阅读空间规划详解</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="https://picsum.photos/seed/sort2/400/250" alt="家具搭配" class="card-img">
+                    <div class="card-content">
+                        <span class="card-tag">家具搭配</span>
+                        <h3>风格化改造方案</h3>
+                        <p>从北欧简约到工业复古，不同的收纳风格需要不同的家具组合。探索如何利用现有家具进行微改造。</p>
+                        <a href="#" class="card-link">查看搭配指南</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="https://picsum.photos/seed/sort3/400/250" alt="道具使用" class="card-img">
+                    <div class="card-content">
+                        <span class="card-tag">道具使用</span>
+                        <h3>解锁高级收纳道具</h3>
+                        <p>合理使用磁吸板、伸缩杆等道具可以解决死角收纳问题。了解哪些道具是性价比最高的开局选择。</p>
+                        <a href="#" class="card-link">探索道具库</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Level Table Section -->
+        <section id="levels" class="container">
+            <h2 class="section-title">关卡进度与难点解析</h2>
+            <div class="level-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>关卡名称</th>
+                            <th>难度评级</th>
+                            <th>核心挑战</th>
+                            <th>当前状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>废弃仓库</td>
+                            <td>★☆☆</td>
+                            <td>物品分类与基础归位</td>
+                            <td><span class="status-badge status-done">已完成</span></td>
+                        </tr>
+                        <tr>
+                            <td>狭小公寓</td>
+                            <td>★★☆</td>
+                            <td>垂直空间利用与床底收纳</td>
+                            <td><span class="status-badge status-done">已完成</span></td>
+                        </tr>
+                        <tr>
+                            <td>杂乱书房</td>
+                            <td>★★★</td>
+                            <td>书籍与文件的长久整理</td>
+                            <td><span class="status-badge status-todo">进行中</span></td>
+                        </tr>
+                        <tr>
+                            <td>荒漠别墅</td>
+                            <td>★★★★</td>
+                            <td>大空间规划与风格统一</td>
+                            <td><span class="status-badge status-todo">未开始</span></td>
+                        </tr>
+                        <tr>
+                            <td>深海渔村</td>
+                            <td>★★★★★</td>
+                            <td>特殊材质收纳与防潮处理</td>
+                            <td><span class="status-badge status-todo">未开始</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Tools Section -->
+        <section id="tools" class="tools-section">
+            <div class="container">
+                <h2 class="section-title" style="text-align: center; border-left: none; padding-left: 0;">必备收纳工具推荐</h2>
+                <div class="tools-grid">
+                    <div class="tool-item">📦 伸缩隔板</div>
+                    <div class="tool-item">🧴 垂直挂钩组</div>
+                    <div class="tool-item">🧺 抽屉分隔盒</div>
+                    <div class="tool-item">🧱 磁吸置物板</div>
+                    <div class="tool-item">✂️ 切割机</div>
+                    <div class="tool-item">🧹 清洁套装</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="container">
+            <h2 class="section-title">常见问题解答</h2>
+            <div class="faq-section">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>游戏中的“真香定律”如何体现？</span>
+                        <div class="icon-plus"></div>
+                    </div>
+                    <div class="faq-answer">
+                        在游戏中，当玩家完成一个看似不可能的收纳布局后，系统会触发特殊的视觉反馈和台词，象征玩家对整洁空间的“真香”认可，这是游戏的核心趣味点之一。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>如何解锁所有关卡？</span>
+                        <div class="icon-plus"></div>
+                    </div>
+                    <div class="faq-answer">
+                        关卡通常需要完成前置关卡并达到一定的星级评价。建议优先完成主线剧情，收集足够的金币来购买高级家具图纸。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>荒漠关卡有什么特殊机制吗？</span>
+                        <div class="icon-plus"></div>
+                    </div>
+                    <div class="faq-answer">
+                        荒漠关卡通常伴随着沙尘暴天气，会影响视线。你需要提前规划好防风措施，并合理利用高墙家具来阻挡风沙，保护你的收纳成果。
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>真香收纳荒漠屠夫2 攻略站</h3>
+                <p style="color: #bdc3c7; margin-top: 10px;">专注提供最详尽的收纳整理技巧与游戏攻略，助你打造理想空间。</p>
+                <div class="footer-links" style="margin-top: 20px;">
+                    <a href="#">关于我们</a>
+                    <a href="#">投稿指南</a>
+                    <a href="#">隐私政策</a>
+                    <a href="#">联系合作</a>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023-2024 真香收纳攻略网. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的FAQ折叠交互
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // 关闭其他打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项状态
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
