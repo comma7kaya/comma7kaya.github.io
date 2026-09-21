@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="avno1好片推荐 - 专注提供高清影视、精选剧集及热门综艺的在线观看平台。为您甄选优质内容，带来极致的视听体验。">
+    <meta name="keywords" content="avno1好片推荐,高清影视,在线观看,推荐剧集">
+    <title>avno1好片推荐 - 高清影视在线观看与精选剧集指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e50914;
+            --primary-hover: #b20710;
+            --bg-dark: #141414;
+            --bg-card: #1f1f1f;
+            --text-main: #ffffff;
+            --text-secondary: #b3b3b3;
+            --spacing-unit: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title a {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: normal;
+        }
+
+        .section-title a:hover {
+            color: var(--text-main);
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+            padding: 12px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .search-bar {
+            display: flex;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search-bar input {
+            background: transparent;
+            border: none;
+            padding: 8px 12px;
+            color: #fff;
+            width: 200px;
+            outline: none;
+        }
+
+        .search-bar button {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 0 12px;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(to top, var(--bg-dark) 0%, transparent 100%), url('https://picsum.photos/seed/avno1hero/1600/900') no-repeat center center/cover;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-tag {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4px 8px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--text-main);
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Main Grid */
+        main {
+            flex: 1;
+            padding: 40px 0;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .card-image {
+            position: relative;
+            padding-top: 140%; /* 5:7 Aspect Ratio */
+            background-color: #000;
+        }
+
+        .card-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 12px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .play-icon {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .card-info {
+            padding: 12px;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .rating {
+            color: #f5c518;
+        }
+
+        /* Categories Section */
+        .categories-section {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #333;
+        }
+
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tag {
+            background-color: #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .tag:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 60px;
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #333;
+            padding: 16px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 40px 0;
+            margin-top: auto;
+            border-top: 1px solid #333;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            margin: 0 12px;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-main);
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                height: 350px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            nav {
+                display: none; /* Simplified for mobile */
+            }
+            .grid-layout {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+            .search-bar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">avno1<span>好片推荐</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">最新上映</a></li>
+                    <li><a href="#">高分榜单</a></li>
+                    <li><a href="#">分类浏览</a></li>
+                    <li><a href="#">我的收藏</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="搜索影片、演员...">
+                <button>🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-tag">本周推荐</span>
+                    <h1>探索光影世界，发现无限可能</h1>
+                    <p>avno1好片推荐为您精选全球优质影视内容，涵盖动作、科幻、剧情、喜剧等多种类型。无论您是想放松心情还是寻找深度思考，这里都有属于您的精彩。</p>
+                    <div>
+                        <button class="btn">立即观看</button>
+                        <button class="btn btn-outline">加入片单</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Updates -->
+        <section class="container" style="margin-top: 40px;">
+            <div class="section-title">
+                <h2>最新更新</h2>
+                <a href="#">查看全部 &gt;</a>
+            </div>
+            <div class="grid-layout">
+                <!-- Card 1 -->
+                <article class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/movie1/300/420" alt="电影封面">
+                        <div class="card-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">星际穿越：未知的边界</h3>
+                        <div class="card-meta">
+                            <span>科幻 / 冒险</span>
+                            <span class="rating">9.8</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/movie2/300/420" alt="电影封面">
+                        <div class="card-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">城市边缘的旋律</h3>
+                        <div class="card-meta">
+                            <span>剧情 / 爱情</span>
+                            <span class="rating">8.5</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/movie3/300/420" alt="电影封面">
+                        <div class="card-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">极速追击</h3>
+                        <div class="card-meta">
+                            <span>动作 / 犯罪</span>
+                            <span class="rating">9.2</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/movie4/300/420" alt="电影封面">
+                        <div class="card-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">深夜食堂：第二季</h3>
+                        <div class="card-meta">
+                            <span>生活 / 治愈</span>
+                            <span class="rating">9.0</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/movie5/300/420" alt="电影封面">
+                        <div class="card-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">迷雾侦探</h3>
+                        <div class="card-meta">
+                            <span>悬疑 / 推理</span>
+                            <span class="rating">8.9</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/movie6/300/420" alt="电影封面">
+                        <div class="card-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="card-title">未来简史：动画版</h3>
+                        <div class="card-meta">
+                            <span>动画 / 科幻</span>
+                            <span class="rating">9.5</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="categories-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>热门分类</h2>
+                </div>
+                <div class="category-tags">
+                    <a href="#" class="tag">最新上线</a>
+                    <a href="#" class="tag">豆瓣高分</a>
+                    <a href="#" class="tag">IMDb Top 250</a>
+                    <a href="#" class="tag">冷门佳片</a>
+                    <a href="#" class="tag">经典重温</a>
+                    <a href="#" class="tag">纪录片</a>
+                    <a href="#" class="tag">纪录片</a>
+                    <a href="#" class="tag">综艺</a>
+                    <a href="#" class="tag">动漫</a>
+                    <a href="#" class="tag">海外剧</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="container" style="margin-top: 60px;">
+            <div class="section-title">
+                <h2>常见问题</h2>
+            </div>
+            <div class="faq-section">
+                <div class="faq-item">
+                    <div class="faq-question">avno1好片推荐的内容来源是什么？</div>
+                    <div class="faq-answer">我们致力于为用户提供正版授权或版权方允许分享的影视资源，确保观看体验安全且高清。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如何找到我喜欢的电影？</div>
+                    <div class="faq-answer">您可以使用顶部的搜索框输入电影名称、演员或导演名字，也可以通过热门分类标签快速浏览。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">支持哪些设备观看？</div>
+                    <div class="faq-answer">本站支持电脑端浏览器观看，同时也完美适配手机、平板等移动设备，随时随地享受精彩。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如果遇到播放问题怎么办？</div>
+                    <div class="faq-answer">请尝试清除浏览器缓存或更换播放源。如果问题依然存在，请通过联系我们页面反馈。</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">版权声明</a>
+                <a href="#">免责声明</a>
+                <a href="#">隐私政策</a>
+                <a href="#">联系客服</a>
+            </div>
+            <p class="copyright">&copy; 2023 avno1好片推荐. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
