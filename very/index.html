@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="verypsp阅读权限 - 深度解析 PSP 电子书阅读器的文件加密机制、DRM 解除原理及正版授权购买指南，提供安全的阅读权限获取方法与常见问题解答。">
+    <meta name="keywords" content="verypsp阅读权限, PSP电子书, DRM解除, 电子书加密, 阅读器授权, PSP格式">
+    <title>verypsp阅读权限 - PSP电子书授权机制与安全阅读指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #f0f4f8;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --border-color: #e1e4e8;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background: #fff;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 1rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .cta-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .cta-btn:hover {
+            background-color: #004494;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #e6f7ff;
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Main Content Layout */
+        .main-wrapper {
+            max-width: var(--container-width);
+            margin: 3rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        /* Content Sections */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title h2 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .section-title .more-link {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+        }
+
+        .info-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .info-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .info-card p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            text-align: justify;
+        }
+
+        .warning-box {
+            background: #fff8f0;
+            border-left: 4px solid #faad14;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            color: #8c6d1f;
+        }
+
+        .step-list {
+            counter-reset: step-counter;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-item::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 2rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Sidebar */
+        aside {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .sidebar-widget {
+            background: #f8f9fa;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-widget h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 0.5rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 1rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .faq-answer {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #b0b0b0;
+            padding: 4rem 1rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none; /* Simplified for mobile */
+            }
+
+            .header-inner {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Verypsp</span>指南
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">阅读权限</a></li>
+                    <li><a href="#">格式转换</a></li>
+                    <li><a href="#">常见问题</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="cta-btn">获取授权</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-container">
+            <span class="status-badge">Verypsp 阅读器 v2.0</span>
+            <h1>verypsp阅读权限</h1>
+            <p>深入解析 PSP 电子书阅读器的加密机制、正版授权获取方式以及安全解除 DRM 限制的技术指南。</p>
+        </div>
+    </section>
+
+    <div class="main-wrapper">
+        <!-- Main Content -->
+        <main>
+            <!-- Intro -->
+            <article class="info-card">
+                <h3>什么是 VeryPSP 阅读权限？</h3>
+                <p>VeryPSP 是一款针对索尼 PlayStation Portable（PSP）掌机的电子书阅读软件。与普通的 TXT 阅读器不同，VeryPSP 支持加密的 <strong>.pml</strong> 文件格式。为了保护版权，正版电子书通常带有 DRM（数字版权管理）加密，这就需要用户在设备上获得特定的“阅读权限”才能解锁并阅读内容。</p>
+                <div class="warning-box">
+                    <strong>注意：</strong> VeryPSP 的阅读权限通常与特定的加密密钥绑定。如果你的设备没有对应的权限密钥，或者密钥与电子书不匹配，将无法打开文件，甚至可能导致程序崩溃。
+                </div>
+            </article>
+
+            <!-- How to Get -->
+            <section>
+                <div class="section-title">
+                    <h2>如何获取阅读权限</h2>
+                    <a href="#" class="more-link">查看完整教程 &rarr;</a>
+                </div>
+                <div class="info-card">
+                    <h3>正版授权购买流程</h3>
+                    <p>获取 Verypsp 阅读权限最安全、最稳定的方式是通过官方渠道购买授权密钥。以下是标准操作流程：</p>
+                    <div class="step-list">
+                        <div class="step-item">
+                            <span class="step-title">1. 购买电子书或授权包</span>
+                            <p>在支持的电子书商城购买带有 VeryPSP 格式的书籍。部分商家会直接提供授权码，或者授权码会与书籍 ID 绑定。</p>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-title">2. 输入授权码</span>
+                            <p>打开 VeryPSP 软件，进入“设置”或“授权管理”界面，输入购买时获得的授权码（License Key）。</p>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-title">3. 验证与同步</span>
+                            <p>软件会自动连接服务器验证权限。验证成功后，你将拥有该特定书籍或该账号下所有书籍的永久阅读权限。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technical Info -->
+            <section>
+                <div class="section-title">
+                    <h2>权限验证机制说明</h2>
+                </div>
+                <div class="info-card">
+                    <h3>密钥类型与文件格式</h3>
+                    <p>VeryPSP 阅读权限主要针对 <code>.pml</code> 文件。该格式实际上是一个压缩包，内部包含了加密的文本数据和用于权限验证的头部信息。</p>
+                    <ul style="margin-top: 1rem; margin-left: 1.5rem; color: var(--text-light);">
+                        <li><strong>文本加密：</strong> 正文内容通常使用简单的 XOR 或 AES 算法加密，防止直接篡改。</li>
+                        <li><strong>权限校验：</strong> 每一页的开头都会包含一个校验码，必须与你的设备或账号权限匹配才能解码。</li>
+                        <li><strong>设备绑定：</strong> 某些高级授权需要绑定 PSP 的主机 ID，这限制了权限只能在特定的设备上使用。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Troubleshooting -->
+            <section>
+                <div class="section-title">
+                    <h2>常见问题与故障排除</h2>
+                </div>
+                <div class="info-card">
+                    <h3>Q: 提示“权限不足”或“密钥错误”怎么办？</h3>
+                    <p>这通常意味着你的 VeryPSP 版本与书籍的加密算法不匹配，或者输入的授权码有误。请检查授权码是否包含连字符，并确保软件已更新到最新版本。</p>
+                    
+                    <h3 style="margin-top: 1.5rem;">Q: 解除 DRM 是否合法？</h3>
+                    <p>本站仅提供正版购买指南和软件使用说明。解除 DRM（数字版权管理）可能违反电子书购买协议或版权法，请务必支持正版内容。</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Sidebar -->
+        <aside>
+            <div class="sidebar-widget">
+                <h3>快速链接</h3>
+                <ul>
+                    <li><a href="#">VeryPSP 官方下载</a></li>
+                    <li><a href="#">PML 格式转换工具</a></li>
+                    <li><a href="#">授权码购买入口</a></li>
+                    <li><a href="#">PSP 主机固件指南</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>FAQ 常见问题</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-question">VeryPSP 支持哪些文件格式？</div>
+                    <div class="faq-answer">主要支持 .pml 格式。部分版本支持通过插件直接打开 .txt 和 .html 文件，但无法直接阅读加密的 .pml 文件。</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">授权码可以重复使用吗？</div>
+                    <div class="faq-answer">通常情况下，一个授权码只能绑定一个设备或一个账号。购买前请确认商家关于授权码绑定的具体条款。</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">忘记授权码如何找回？</div>
+                    <div class="faq-answer">如果授权码与购买账号绑定，建议登录购买平台的服务器找回。如果未绑定，授权码通常无法找回。</div>
+                </div>
+
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 1rem;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                    <span style="color:white;">Verypsp指南</span>
+                </div>
+                <p style="font-size: 0.9rem; line-height: 1.6;">
+                    专注于 PSP 掌机阅读体验的数字资源指南站，提供最新的软件工具、格式解析及正版授权购买建议。
+                </p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>资源中心</h4>
+                <ul>
+                    <li><a href="#">软件下载</a></li>
+                    <li><a href="#">PML 转换器</a></li>
+                    <li><a href="#">字体库</a></li>
+                    <li><a href="#">电子书资源</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>支持与服务</h4>
+                <ul>
+                    <li><a href="#">联系客服</a></li>
+                    <li><a href="#">使用帮助</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">免责声明</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 VeryPsp Guide. All rights reserved. 本站仅提供技术交流与信息展示。</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Toggle Script
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items (optional, for accordion effect)
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
